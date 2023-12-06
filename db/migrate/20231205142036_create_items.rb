@@ -6,9 +6,7 @@ class CreateItems < ActiveRecord::Migration[6.1]
       t.integer :price, null: false
       # 以下チャレンジ機能
       t.integer :genre_id, null: false
-      def change
-      change_column :items, :is_sold, :boolean, default: 'TRUE', null: false
-      end
+      t.boolean :is_sold, default: 'TRUE', null: false
 
       t.timestamps
     end
