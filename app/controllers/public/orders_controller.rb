@@ -1,7 +1,9 @@
 class Public::OrdersController < ApplicationController
+  before_action :authenticate_customer!
+
   def new
   end
-  
+
   def create
   end
 
@@ -10,11 +12,11 @@ class Public::OrdersController < ApplicationController
 
   def show
   end
-  
+
   def confirm
   end
-  
+
   def thanks
   end
-  
+
 end
