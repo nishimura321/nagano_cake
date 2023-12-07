@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :public do
-    get 'cart_items/index'
-  end
   # device顧客用
   # URL /customers/sign_in ...
   devise_for :customers, skip: [:passwords], controllers: {
@@ -25,13 +22,25 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show]
     get 'customers/mypage' => 'customers#show'
     get 'customers/information/edit' => 'customers#edit'
+    get 'customers/information' => 'customers#update'
     get 'customers/confirm_withdrawal' => 'customers#confirm_withdrawal'
-    resources :cart_items, only: [:index]
+    get 'customers/withdrawal' => 'customers#withdrawal'
+    resources :cart_items, only: [:create, :index, :update, :destry]
+    get 'cart_items/:id/destry_all' => 'cart_items#destry_all'
+    resources :addresses, only: [:create, :index, :edit, :update, :destry]
+    resources :orders, only: [:new, :create, :index, :show]
+    get 'orders/confirm' => 'orders#confirm'
+    get 'oeders/thanks' => 'oeders#thanks'
   end
 
   #管理者側
   namespace :admin do
   get '/' => 'homes#top'
+  resources :items, only: [:new, :create, :index, :edit, :update, :destry]
+  resources :genres, only: [:new, :create, :index, :edit, :update]
+  resources :customers, only: [:index, :show, :edit, :update]
+  resources :orders, only: [:show, :update]
+  resources :orders_details, only: [:update]
   end
 
 end
