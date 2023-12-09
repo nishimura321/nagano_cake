@@ -3,3 +3,7 @@
 .bg-gray {
   background-color: #eee;
 }
+
+.table.border-black, .table.border-black td {
+  border: 1px solid black !important;
+}

@@ -3,24 +3,42 @@
     <div class="mx-auto col-11">
       <h5><span class="bg-gray">　ログイン　</span></h5>
       <br>
-      <p>会員の方はこちらからログイン</p>
+      　<span class="bg-gray">　会員の方はこちらからログイン　</span>
 
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div class="field">
-          <%= f.label :メールアドレス %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "pr-5" %>
-        </div>
+        <table class="table table-borderless col-sm-8">
+          <tbody>
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <tr>
+          <div class="field">
+          <td></td>
+          <td></td>
+          <td><%= f.label :メールアドレス%></td>
+          <td><%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com", class: "form-control" %></td>
+          </div>
+          </tr>
 
-        <div class="field">
-          <%= f.label :パスワード%>
-          <%= f.password_field :password, autocomplete: "current-password", class: "pr-5" %>
-        </div>
-        <br>
-        <div class="actions">
-          <%= f.submit "ログイン", class: "btn btn-primary" %>
-        </div>
-      <% end %>
-      <br>
+          <tr>
+          <div class="field">
+          <td></td>
+          <td></td>
+          <td><%= f.label :パスワード%></td>
+          <td><%= f.password_field :password, autocomplete: "current-password", class: "form-control" %></td>
+          </div>
+          </tr>
+
+          <tr>
+          <div class="actions">
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="pt-4"><%= f.submit "　ログイン　", class: "btn btn-primary" %></td>
+          </div>
+          </tr>
+          <% end %>
+          </tbody>
+        </table>
+
+      <br><br>
       <h5><span class="bg-gray">　会員登録がお済みでない方　</span></h5>
       <%= render "public/shared/links" %>
     </div>

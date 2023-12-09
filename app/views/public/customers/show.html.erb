@@ -4,35 +4,35 @@
       <h5><span class="bg-gray">　マイページ　</span></h5>
       <br>
       <h5><storong>登録情報　</storong><%= link_to '編集する', customers_information_edit_path(@customer), class: "btn btn-success" %></h5>
-        <table class="table">
+        <table class="table border border-black  col-sm-9">
           <tbody>
           <tr>
-            <td>氏名</td>
+            <td class="table-active" style="width: 30%">氏名</td>
             <td><%= @customer.last_name %>　<%= @customer.first_name %></td>
           </tr>
           <tr>
-            <td>カナ</td>
+            <td class="table-active" style="width: 30%">カナ</td>
             <td><%= @customer.last_name_kana %>　<%= @customer.first_name_kana %></td>
           </tr>
           <tr>
-            <td>郵便番号</td>
+            <td class="table-active" style="width: 30%">郵便番号</td>
             <td><%= @customer.postal_code %></td>
           </tr>
           <tr>
-            <td>住所</td>
+            <td class="table-active" style="width: 30%">住所</td>
             <td><%= @customer.address %></td>
           </tr>
           <tr>
-            <td>電話番号</td>
+            <td class="table-active" style="width: 30%">電話番号</td>
             <td><%= @customer.telephone_number %></td>
           </tr>
           <tr>
-            <td>メールアドレス</td>
+            <td class="table-active" style="width: 30%">メールアドレス</td>
             <td><%= @customer.email %></td>
           </tr>
           </tbody>
         </table>
-        <h5><storong>配送先　</storong><%= link_to '一覧を見る', addresses_path(@customer), class: "btn btn-primary" %></h5>
+        <h5><storong>配送先　　</storong><%= link_to '一覧を見る', addresses_path(@customer), class: "btn btn-primary" %></h5>
         <h5><storong>注文履歴　</storong><%= link_to '一覧を見る', orders_path(@customer), class: "btn btn-primary" %></h5>
     </div>
   </div>
