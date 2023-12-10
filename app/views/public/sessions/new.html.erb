@@ -7,7 +7,7 @@
 
         <table class="table table-borderless col-sm-8">
           <tbody>
-          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <%= form_with model: @coustmer, url: customer_session_path do |f| %>
           <tr>
           <div class="field">
           <td></td>
