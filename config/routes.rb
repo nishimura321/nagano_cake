@@ -22,14 +22,14 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show]
     get 'customers/mypage' => 'customers#show'
     get 'customers/information/edit' => 'customers#edit'
-    get 'customers/information' => 'customers#update'
+    patch 'customers/information' => 'customers#update'
     get 'customers/confirm_withdrawal' => 'customers#confirm_withdrawal'
-    get 'customers/withdrawal' => 'customers#withdrawal'
+    patch 'customers/withdrawal' => 'customers#withdrawal'
     resources :cart_items, only: [:create, :index, :update, :destry]
-    get 'cart_items/:id/destry_all' => 'cart_items#destry_all'
+    delete 'cart_items/:id/destry_all' => 'cart_items#destry_all'
     resources :addresses, only: [:create, :index, :edit, :update, :destry]
     resources :orders, only: [:new, :create, :index, :show]
-    get 'orders/confirm' => 'orders#confirm'
+    post 'orders/confirm' => 'orders#confirm'
     get 'oeders/thanks' => 'oeders#thanks'
   end
 

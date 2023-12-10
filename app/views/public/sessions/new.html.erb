@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row">
     <div class="mx-auto col-11">
-      <h5><span class="bg-gray">　ログイン　</span></h5>
+      <h5><span class="bg-gray pl-4 pr-4">ログイン</span></h5>
       <br>
-      　<span class="bg-gray">　会員の方はこちらからログイン　</span>
+      　<h5><span class="bg-gray pl-4 pr-4">会員の方はこちらからログイン</span></h5>
 
         <table class="table table-borderless col-sm-8">
           <tbody>
-          <%= form_with model: @coustmer, url: customer_session_path do |f| %>
+          <%= form_with model: @customer, url: customer_session_path do |f| %>
           <tr>
           <div class="field">
           <td></td>
@@ -31,7 +31,7 @@
           <td></td>
           <td></td>
           <td></td>
-          <td class="pt-4"><%= f.submit "　ログイン　", class: "btn btn-primary" %></td>
+          <td class="pt-4"><%= f.submit "ログイン", class: "btn btn-primary pl-5 pr-5" %></td>
           </div>
           </tr>
           <% end %>
@@ -39,7 +39,7 @@
         </table>
 
       <br><br>
-      <h5><span class="bg-gray">　会員登録がお済みでない方　</span></h5>
+      <h5><span class="bg-gray pl-4 pr-4">会員登録がお済みでない方</span></h5>
       <%= render "public/shared/links" %>
     </div>
   </div>
