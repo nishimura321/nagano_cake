@@ -66,10 +66,10 @@
     </nav>
   </header>
     <main class="p-3">
-      <div>
-      <%= flash[:notice] %>
-      </div>
-      <br>
+    <% flash.each do |message_type, message| %>
+      <div class="flash-message <%= message_type %>"><%= message %></div>
+    <% end %>
+    <br>
     <%= yield %>
     </main>
   <footer class="border-top border-secondary">
