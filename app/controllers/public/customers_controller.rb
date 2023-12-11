@@ -2,16 +2,17 @@ class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
 
   def show
-    @customer = current_customer
+    @customer = Customer.find(current_customer.id)
   end
 
   def edit
-    @customer = current_customer
+    @customer = Customer.find(current_customer.id)
   end
 
   def update
-    customer = current_customer
+    customer = Customer.find(current_customer.id)
     customer.update(customer_params)
+    flash[:notice] = "更新処理が完了しました。"
     redirect_to customers_mypage_path(current_customer)
   end
 
@@ -22,7 +23,7 @@ class Public::CustomersController < ApplicationController
     @customer = Customer.find(current_customer.id)
     @customer.update(is_active: false)
     reset_session
-    flash[:notice] = "退会処理を実行いたしました"
+    flash[:notice] = "退会処理を実行しました。"
     redirect_to root_path
   end
 

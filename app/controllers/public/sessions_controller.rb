@@ -20,7 +20,7 @@ class Public::SessionsController < Devise::SessionsController
   # end
 
   #protected
-  
+
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
@@ -43,15 +43,14 @@ class Public::SessionsController < Devise::SessionsController
     return if customer.nil?
     # 【処理内容3】 取得したアカウントのパスワードと入力されたパスワードが一致していない場合、このメソッドを終了する
     return unless customer.valid_password?(params[:customer][:password])
-    # 【処理内容4】 アクティブでない会員に対する処理
-    customer.is_active == false
-    flash[:notice] = "退会済みです。再度ご登録をしてご利用ください"
-    redirect_to new_customer_registration_path
+    # 【処理内容4】 アクティブな会員に対する処理
+    if customer.is_active
+      sign_in(customer)
+      redirect_to after_sign_in_path_for(customer)
+    # 【処理内容5】 アクティブでない会員に対する処理
     else
-      flash[:notice] = "項目を入力してください"
-    end
-    else
-      flash[:notice] = "該当するユーザーが見つかりません"
+      flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
+      redirect_to new_customer_registration_path
     end
   end
 
