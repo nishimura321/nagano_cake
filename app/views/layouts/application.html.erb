@@ -14,7 +14,14 @@
   <header  class="border-bottom border-secondary p-2">
     <nav class="navbar navbar-expand-lg navbar-light">
       <div class="container pr-0">
-        <span class="navbar-brand border border-dark">　　LOGO　　</span>
+        <div class="navbar-brand border border-dark mr-5">
+          <%= link_to "LOGO", root_path, class: "pr-5 pl-5" %>
+        </div>
+
+        <% flash.each do |message_type, message| %>
+        <div class="flash-message <%= message_type %> ml-5"><%= message %></div>
+        <% end %>
+
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ml-auto">
           <% if admin_signed_in? %>
@@ -66,10 +73,6 @@
     </nav>
   </header>
     <main class="p-3">
-    <% flash.each do |message_type, message| %>
-      <div class="flash-message <%= message_type %>"><%= message %></div>
-    <% end %>
-    <br>
     <%= yield %>
     </main>
   <footer class="border-top border-secondary">

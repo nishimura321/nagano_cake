@@ -8,11 +8,15 @@
   border: 1px solid black !important;
 }
 
-.card-img-overlay{
+.card-img-overlay {
   margin-left: 180px;
   width: 420px;
   height: 130px;
   background-color: #fff;
   top: calc(40% - 0.5rem);
   opacity: 0.8;
+}
+
+.fs-4 {
+  font-size: 21px;
 }
