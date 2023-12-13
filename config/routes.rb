@@ -25,9 +25,9 @@ Rails.application.routes.draw do
     patch 'customers/information' => 'customers#update'
     get 'customers/confirm_withdrawal' => 'customers#confirm_withdrawal'
     patch 'customers/withdrawal' => 'customers#withdrawal'
-    resources :cart_items, only: [:create, :index, :update, :destry]
+    resources :cart_items, only: [:create, :index, :update, :destroy]
     delete 'cart_items/:id/destry_all' => 'cart_items#destry_all'
-    resources :addresses, only: [:create, :index, :edit, :update, :destry]
+    resources :addresses, only: [:create, :index, :edit, :update, :destroy]
     resources :orders, only: [:new, :create, :index, :show]
     post 'orders/confirm' => 'orders#confirm'
     get 'oeders/thanks' => 'oeders#thanks'
@@ -36,8 +36,8 @@ Rails.application.routes.draw do
   #管理者側
   namespace :admin do
   get '/' => 'homes#top'
-  resources :items, only: [:new, :create, :index, :edit, :update, :destry]
-  resources :genres, only: [:new, :create, :index, :edit, :update, :destry]
+  resources :items, only: [:new, :create, :index, :show, :edit, :update, :destroy]
+  resources :genres, only: [:new, :create, :index, :edit, :update, :destroy]
   resources :customers, only: [:index, :show, :edit, :update]
   resources :orders, only: [:show, :update]
   resources :orders_details, only: [:update]

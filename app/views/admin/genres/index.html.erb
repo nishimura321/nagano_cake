@@ -20,7 +20,7 @@
     <table class="table border-bottom">
       <thead class="table-secondary">
       <tr>
-        <th>ジャンル</th>
+        <th class="pl-5">ジャンル</th>
         <td></td>
       </tr>
       </thead>
@@ -28,8 +28,8 @@
       <% @genres.each do |genre| %>
       <tbody>
       <tr>
-        <td><span><%= genre.name %></span></td>
-        <td><%= link_to '編集する', edit_admin_genre_path(genre.id), class: "btn btn-success pl-4 pr-4" %></td>
+        <td class="pr-5"><span><%= genre.name %></span></td>
+        <td class="pl-5"><%= link_to '編集する', edit_admin_genre_path(genre.id), class: "btn btn-success pl-4 pr-4" %></td>
       </tr>
       </tbody>
       <% end%>
