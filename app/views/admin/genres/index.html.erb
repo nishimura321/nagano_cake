@@ -1,26 +1,26 @@
 <div class="container mt-3">
   <div class="row mb-5">
-    <div class="mx-auto col-11 ml-5">
-      <h5><span class="bg-gray pl-4 pr-4">ジャンル一覧・追加</span></h5>
+    <div class="mx-auto col-11">
+      <h5 class="ml-5"><span class="bg-gray pl-4 pr-4"><strong>ジャンル一覧・追加</strong></span></h5>
     <div>
   </div>
   <br><br>
   <div class="row mb-5">
-    <div class="col-11">
+    <div class="col-12">
     <%= form_with model: @genre, url: admin_genres_path do |f| %>
-      <span>ジャンル名</span>
-      <%= f.text_field :name, placeholder: "ジャンル名" %>
-      <%= f.submit '新規登録', class: "btn btn-success pl-5 pr-5" %>
+      <span class="fs-13 mr-5"><strong>ジャンル名</strong></span>
+      <%= f.text_field :name, placeholder: "ジャンル名", class: "mr-5" %>
+      <%= f.submit '新規登録', class: "btn btn-success pl-4 pr-4" %>
     <% end %>
     <div>
   <div>
   <br><br>
   <div class="row">
     <div class="col-5">
-    <table class="table">
+    <table class="table border-bottom">
       <thead class="table-secondary">
       <tr>
-        <td>ジャンル</td>
+        <th>ジャンル</th>
         <td></td>
       </tr>
       </thead>

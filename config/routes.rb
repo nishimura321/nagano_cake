@@ -37,7 +37,7 @@ Rails.application.routes.draw do
   namespace :admin do
   get '/' => 'homes#top'
   resources :items, only: [:new, :create, :index, :edit, :update, :destry]
-  resources :genres, only: [:new, :create, :index, :edit, :update]
+  resources :genres, only: [:new, :create, :index, :edit, :update, :destry]
   resources :customers, only: [:index, :show, :edit, :update]
   resources :orders, only: [:show, :update]
   resources :orders_details, only: [:update]
