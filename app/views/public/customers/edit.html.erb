@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container mt-3">
   <div class="row">
     <div class="mx-auto col-11">
-      <h5><span class="bg-gray pl-4 pr-4">会員情報編集</span></h5>
+      <h5 class="ml-5"><span class="bg-gray pl-4 pr-4">会員情報編集</span></h5>
       <br>
       <%= form_with model: @customer, url: customers_information_path(current_customer), method: :patch do |f| %>
 
@@ -9,60 +9,53 @@
           <tbody>
           <tr>
             <div class="field">
-            <td class="pb-2"><%= f.label :"名前" %></td>
-            <td class="pb-2"><%= f.label :"　(姓)" %></td>
+            <td class="pb-2 pr-5"><%= f.label :"氏名" %></td>
             <td class="pb-2"><%= f.text_field :last_name, class: "form-control" %></td>
-            <td class="pb-2"><%= f.label :"　　(名)" %></td>
+            <td class="pr-5"></td>
             <td class="pb-2"><%= f.text_field :first_name, class: "form-control" %></td>
             </div>
           </tr>
 
           <tr>
             <div class="field">
-            <td class="pb-2"><%= f.label :"フリガナ" %></td>
-            <td class="pb-2"><%= f.label :"　(セイ)" %></td>
+            <td class="pb-2 pr-5"><%= f.label :"フリガナ" %></td>
             <td class="pb-2"><%= f.text_field :last_name_kana, class: "form-control" %></td>
-            <td class="pb-2"><%= f.label :"　　(メイ)" %></td>
+            <td class="pr-5"></td>
             <td class="pb-2"><%= f.text_field :first_name_kana, class: "form-control" %></td>
             </div>
           </tr>
 
           <tr>
             <div class="field">
-            <td class="pb-2"><%= f.label :"郵便番号(ハイフンなし)" %></td>
-            <td></td>
+            <td class="pb-2 pr-5"><%= f.label :"郵便番号" %></td>
             <td class="pb-2"><%= f.text_field :postal_code, class: "form-control" %></td>
             </div>
           </tr>
 
           <tr>
             <div class="field">
-            <td class="pb-2"><%= f.label :住所%></td>
-            <td></td>
+            <td class="pb-2 pr-5"><%= f.label :住所%></td>
             <td colspan="5" class="pb-2"><%= f.text_field :address, class: "form-control" %></td>
             </div>
           </tr>
 
           <tr>
             <div class="field">
-            <td class="pb-2"><%= f.label :"電話番号(ハイフンなし)" %></td>
-            <td></td>
+            <td class="pb-2 pr-5"><%= f.label :"電話番号" %></td>
             <td class="pb-2"><%= f.text_field :telephone_number, class: "form-control" %></td>
             </div>
           </tr>
 
           <tr>
             <div class="field">
-            <td class="pb-2"><%= f.label :メールアドレス%></td>
-            <td></td>
+            <td class="pb-2 pr-5"><%= f.label :メールアドレス%></td>
             <td class="pb-2"><%= f.email_field :email, class: "form-control" %></td>
             </div>
           </tr>
 
           <tr>
             <div class="actions">
-            <td></td>
-            <td></td>
+            <td class="pr-5"></td>
             <td class="pt-4"><%= f.submit "編集内容を保存", class: "btn btn-success pl-5 pr-5" %></td>
             <td></td>
             <td></td>
