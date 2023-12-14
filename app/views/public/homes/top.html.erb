@@ -15,10 +15,13 @@
 
   <div class="row mt-4">
     <h2><strong>新着商品</strong></h2>
+  </div>
+
+  <div class="row">
     <div class="new-items">
       <% @new_items.each do |item| %>
       <div class="item mb-4">
-      <%= image_tag item.image_url %>
+      <%= image_tag item.image, size: "300x200" %>
       <p><strong><%= item.name %></strong><p>
       <p><strong>¥<%= item.price %></strong></p>
       </div>

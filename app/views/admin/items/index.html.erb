@@ -6,3 +6,29 @@
   </div><br>
 
   <div class="row">
+    <div class="mx-auto col-9">
+    <% @items.each do |item| %>
+    <table class="table">
+      <thead>
+        <tr class="table-secondary">
+          <th class="pb-2">商品ID</th>
+          <th class="pb-2">商品名</th>
+          <th class="pb-2">税抜価格</th>
+          <th class="pb-2">ジャンル</th>
+          <th class="pb-2">ステータス</th>
+        </tr>
+
+      <tbody>
+        <tr>
+          <td class="pb-2"><%= item.id %></td>
+          <td class="pb-2"><%= link_to item.name, admin_item_path(item.id) %></td>
+          <td class="pb-2"><%= item.price %></td>
+          <td class="pb-2"><%= item.genre.name %></td>
+          <td class="pb-2"><%= item.is_sold %></td>
+        </tr>
+      </tbody>
+    </table>
+    <% end %>
+    </div>
+  </div>
+</div>
