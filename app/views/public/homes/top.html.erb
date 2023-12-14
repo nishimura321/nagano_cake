@@ -18,15 +18,15 @@
   </div>
 
   <div class="row">
-    <div class="new-items">
-      <% @new_items.each do |item| %>
+    <% @new_items.each do |item| %>
+      <div class="col-3">
       <div class="item mb-4">
-      <%= image_tag item.image, size: "300x200" %>
+      <%= image_tag item.image, size: "250x150" %>
       <p><strong><%= item.name %></strong><p>
       <p><strong>¥<%= item.price %></strong></p>
       </div>
+      </div>
     <% end %>
-    </div>
   </div>
 
   <div class="row justify-content-end">
