@@ -30,7 +30,7 @@ class Admin::GenresController < ApplicationController
     @genre = Genre.find(params[:id])
     if @genre.update(genre_params)
       flash[:notice] = "変更を保存しました。"
-    redirect_to admin_genres_path
+      redirect_to admin_genres_path
     else
       flash.now[:notice] = "変更の保存に失敗しました。"
       render :edit

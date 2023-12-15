@@ -1,7 +1,7 @@
 <div class="container mt-3">
   <div class="row mb-5">
     <div class="mx-auto col-11">
-      <h5 class="ml-5"><span class="bg-gray pl-4 pr-4"><strong>ジャンル編集</strong></span></h5>
+      <h5 class="ml-5"><span class="bg-gray px-4">ジャンル編集</span></h5>
     <div>
   </div>
   <br><br>
@@ -10,7 +10,7 @@
     <%= form_with model: @genre, url: admin_genre_path(@genre.id), method: :patch do |f| %>
       <span class="fs-13 mr-5"><strong>ジャンル名</strong></span>
       <%= f.text_field :name, class: "mr-5" %>
-      <%= f.submit '変更を保存', class: "btn btn-success pl-4 pr-4" %>
+      <%= f.submit '変更を保存', class: "btn btn-success px-4" %>
     <% end %>
     <!--<%= link_to "削除する", admin_genre_path(@genre.id), method: :delete%>-->
     <div>

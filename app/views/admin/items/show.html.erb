@@ -2,41 +2,41 @@
 
   <div class="row">
     <div class="col-12">
-      <h5><span class="bg-gray pl-4 pr-4"><strong>商品詳細</strong></span></h5>
+      <h5><span class="bg-gray px-4">商品詳細</span></h5>
     </div>
   </div><br>
 
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-4">
     <%= image_tag @item.image, size: "300x200" %>
     </div>
 
-    <div class="col-md-6">
-    <table>
+    <div class="col-6">
+    <table class="table table-borderless">
       <tbody>
         <tr>
-          <td>商品名</td>
-          <td><%= @item.name %></td>
+          <td scope="col" style="width: 30%">商品名</td>
+          <td scope="col" style="width: 700%"><%= @item.name %></td>
          </tr>
 
          <tr>
-           <td>商品説明</td>
-           <td><%= @item.introduction %></td>
+           <td scope="col" style="width: 30%">商品説明</td>
+           <td scope="col" style="width: 70%"><%= @item.introduction %></td>
          </tr>
 
          <tr>
-           <td>ジャンル</td>
-           <td><%= @item.genre.name %></td>
+           <td scope="col" style="width: 30%">ジャンル</td>
+           <td scope="col" style="width: 70%"><%= @item.genre.name %></td>
          </tr>
 
           <tr>
-            <td>税込価格<br>(税抜価格)</td>
-            <td><%= @item.add_tax_price.to_s(:delimited) %>(<%= @item.price.to_s(:delimited) %>)円</td>
+            <td scope="col" style="width: 30%">税込価格<br>(税抜価格)</td>
+            <td scope="col" style="width: 70%"><%= @item.add_tax_price.to_s(:delimited) %>(<%= @item.price.to_s(:delimited) %>)円</td>
           </tr>
 
           <tr>
-            <td>販売ステータス</td>
-            <td>
+            <td scope="col" style="width: 30%">販売ステータス</td>
+            <td scope="col" style="width: 70%">
               <% if @item.is_sold %>
               <p class="text-success"><strong>販売中</strong></p>
               <% else %>
@@ -44,14 +44,14 @@
               <% end %>
             </td>
           </tr>
-      <tbody>
-    <table>
+      </tbody>
+    </table>
     </div>
   </div><br>
 
-  <div class="row justify-content-center">
-    <div class="col-12">
-    <%= link_to "編集する", admin_item_path(@item), class: "btn btn-success px-4 py-2" %>
+  <div class="row">
+    <div class="mx-auto">
+    <%= link_to "編集する", edit_admin_item_path(@item), class: "btn btn-success px-4 py-2" %>
     </div>
   </div>
 </div>
