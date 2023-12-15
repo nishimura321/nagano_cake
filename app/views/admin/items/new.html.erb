@@ -40,11 +40,11 @@
           <td class="pr-5 pb-2">販売ステータス</td>
           <td class="pb-2">
               <%= f.radio_button :is_sold, "sale" %>
-              <%= f.label :is_sold_sale, "販売中" %>
+              <%= f.label :is_sold_true, "販売中" %>
           </td>
           <td class="pb-2">
               <%= f.radio_button :is_sold, "end_of_sale" %>
-              <%= f.label :is_sold_end_of_sale, "販売停止中" %>
+              <%= f.label :is_sold_false, "販売停止中" %>
           </td>
         </tr>
       </tbody>

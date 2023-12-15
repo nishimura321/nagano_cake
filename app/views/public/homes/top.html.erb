@@ -23,7 +23,7 @@
       <div class="item mb-4">
       <%= image_tag item.image, size: "250x150" %>
       <p><strong><%= item.name %></strong><p>
-      <p><strong>¥<%= item.price %></strong></p>
+      <p><strong>¥<%= item.price.to_s(:delimited) %></strong></p>
       </div>
       </div>
     <% end %>
