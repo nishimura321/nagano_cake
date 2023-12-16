@@ -1,7 +1,7 @@
 <div class="container mt-3">
   <div class="row">
     <div class="mx-auto col-11">
-      <h5 class="ml-5"><span class="bg-gray pl-4 pr-4">会員情報編集</span></h5>
+      <h5 class="ml-5"><span class="bg-gray px-4">会員情報編集</span></h5>
       <br>
       <%= form_with model: @customer, url: customers_information_path(current_customer), method: :patch do |f| %>
 
@@ -34,7 +34,7 @@
 
           <tr>
             <div class="field">
-            <td class="pb-2 pr-5"><%= f.label :住所%></td>
+            <td class="pb-2 pr-5"><%= f.label :"住所" %></td>
             <td colspan="5" class="pb-2"><%= f.text_field :address, class: "form-control" %></td>
             </div>
           </tr>
@@ -48,7 +48,7 @@
 
           <tr>
             <div class="field">
-            <td class="pb-2 pr-5"><%= f.label :メールアドレス%></td>
+            <td class="pb-2 pr-5"><%= f.label :"メールアドレス" %></td>
             <td class="pb-2"><%= f.email_field :email, class: "form-control" %></td>
             </div>
           </tr>
@@ -56,10 +56,10 @@
           <tr>
             <div class="actions">
             <td class="pr-5"></td>
-            <td class="pt-4"><%= f.submit "編集内容を保存", class: "btn btn-success pl-5 pr-5" %></td>
+            <td class="pt-4"><%= f.submit "編集内容を保存", class: "btn btn-success px-5" %></td>
             <td></td>
             <td></td>
-            <td class="pt-4"><%= link_to "退会する", customers_confirm_withdrawal_path, class: "btn btn-danger pl-4 pr-4" %></td>
+            <td class="pt-4"><%= link_to "退会する", customers_confirm_withdrawal_path, class: "btn btn-danger px-4" %></td>
             </div>
           </tr>
 

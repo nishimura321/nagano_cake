@@ -1,9 +1,26 @@
+<div class="container">
+  <div class="row mt-4 mb-4">
+    <h2><strong>商品一覧</strong></h2>
+    <div class="d-flex align-items-end">
+    <h5 class="mb-3 ml-2">(全<%= @item_count %>件)</h5>
+    </div>
+  </div>
+
+  <div class="row">
     <% @items.each do |item| %>
       <div class="col-3">
       <div class="item mb-4">
-      <%= image_tag item.image, size: "250x150" %>
-      <p><strong><%= item.name %></strong><p>
-      <p><strong>¥<%= item.price.to_s(:delimited) %></strong></p>
+      <%= link_to image_tag(item.image, size: "250x150"), item_path(item) %>
+      <p class="mt-3"><strong><%= item.name %></strong><p>
+      <p class="mb-5"><strong>¥<%= item.price.to_s(:delimited) %></strong></p>
       </div>
       </div>
     <% end %>
+  </div>
+
+  <div class="row mt-5 mb-3">
+    <div class="mx-auto">
+      <%= paginate @items %>
+    </div>
+  </div>
+</div>
