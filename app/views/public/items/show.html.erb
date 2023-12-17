@@ -1,2 +1,32 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<div class="container mt-5">
+
+  <div class="row justify-content-center">
+    <div class="col-4">
+    <%= image_tag @item.image, size: "300x200" %>
+    </div>
+
+    <div class="col-6">
+    <table class="table table-borderless">
+      <tbody>
+        <tr>
+          <td><h4><strong><%= @item.name %></strong></h4></td>
+         </tr>
+
+         <tr>
+           <td><%= @item.introduction %></td>
+         </tr>
+
+         <tr>
+           <td></td>
+         </tr>
+
+          <tr>
+            <td><span class="fs-21"><strong>￥<%= @item.add_tax_price.to_s(:delimited) %></strong></span><span class="fs-13 ml-2">(税込)</span></td>
+          </tr>
+
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+<br>
