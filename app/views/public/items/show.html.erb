@@ -6,27 +6,17 @@
     </div>
 
     <div class="col-6">
-    <table class="table table-borderless">
-      <tbody>
-        <tr>
-          <td><h4><strong><%= @item.name %></strong></h4></td>
-         </tr>
-
-         <tr>
-           <td><%= @item.introduction %></td>
-         </tr>
-
-         <tr>
-           <td></td>
-         </tr>
-
-          <tr>
-            <td><span class="fs-21"><strong>￥<%= @item.add_tax_price.to_s(:delimited) %></strong></span><span class="fs-13 ml-2">(税込)</span></td>
-          </tr>
-
-      </tbody>
-    </table>
+      <h4><strong><%= @item.name %></strong></h4>
+      <%= @item.introduction %>
+      <br><br><br>
+      <span class="fs-21"><strong>￥<%= @item.add_tax_price.to_s(:delimited) %></strong></span><span class="fs-13 ml-2">(税込)</span>
+      <br><br>
+      <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
+        <%= f.hidden_field :item_id, :value => @item.id %>
+        <%= f.select :amount, [['個数選択', '']] + (1..10).to_a %>
+        <%= f.submit "カートに入れる", class: "btn btn-success px-3 ml-5" %>
+      <% end %>
     </div>
   </div>
-</div>
-<br>
+
+</div><br>
