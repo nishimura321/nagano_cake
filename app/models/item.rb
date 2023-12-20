@@ -6,7 +6,7 @@ class Item < ApplicationRecord
 
   #税込価格を表示させる
   def add_tax_price
-  (self.price * 1.10).round
+  (self.price * 1.1).floor
   end
 
   def get_image(width, height)
