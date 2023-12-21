@@ -4,13 +4,13 @@
       <h5><span class="bg-gray px-4">ショッピングカート</span></h5>
     </div>
     <div class="col-2 mx-auto">
-      <%= link_to "カートを空にする", cart_items_destry_all_path, method: :delete, "data-confirm" => "本当に空にしますか？", class: "btn btn-danger px-4" %>
+    <% @cart_items.each do |cart_item| %>
+      <%= link_to "カートを空にする", cart_items_destry_all_path(cart_item.id), method: :delete, "data-confirm" => "本当に空にしますか？", class: "btn btn-danger px-4" %>
     </div>
   </div><br>
 
   <div class="row">
     <div class="mx-auto col-9">
-    <% @cart_items.each do |cart_item| %>
     <table class="table border">
       <thead>
         <tr class="table-secondary">

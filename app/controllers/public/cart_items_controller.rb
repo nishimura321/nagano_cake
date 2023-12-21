@@ -2,17 +2,23 @@ class Public::CartItemsController < ApplicationController
 before_action :authenticate_customer!
 
   def create
-    cart_item = CartItem.new(cart_item_params)
-    cart_item.save
+    item_id = params[:item_id]
+    amount = params[:amount].to_i
+    if cart_item = CartItem.find_by(item_id: item_id)
+      cart_item.amount += amount
+      cart_item.save
+    else
+      CartItem.create(item_id: item_id, amount: amount)
+    end
     redirect_to cart_items_path
   end
 
   def index
-    @cart_items = current_customer.cart_items
+    @cart_items = current_customer.cart_item
     #合計を求める
     @total_price = 0
     @cart_items.each do |cart_item|
-      @total_price += item.subtotal
+      @total_price += cart_item.subtotal
     end
   end
 
