@@ -2,7 +2,7 @@ class Public::CartItemsController < ApplicationController
 before_action :authenticate_customer!
 
   def create
-    item_id = params[:item_id]
+    item_id = params[:cart_item][:item_id]
     amount = params[:amount].to_i
     if cart_item = CartItem.find_by(item_id: item_id)
       cart_item.amount += amount
@@ -37,13 +37,13 @@ before_action :authenticate_customer!
     @cart_item = CartItem.find(params[:id])
     @cart_item.destroy
     flash.now[:notice] = "削除しました。"
-    render :index
+    redirect_to cart_items_path
   end
 
   def destroy_all
     current_customer.cart_items.destroy_all
-    flash[:notice] = "カートを空にしました"
-    render :index
+    flash[:notice] = "カートを空にしました。"
+    redirect_to cart_items_path
   end
 
   private
