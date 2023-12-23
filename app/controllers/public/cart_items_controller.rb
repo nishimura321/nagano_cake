@@ -3,12 +3,12 @@ before_action :authenticate_customer!
 
   def create
     item_id = params[:cart_item][:item_id]
-    amount = params[:amount].to_i
+    amount = params[:cart_item][:amount].to_i
     if cart_item = CartItem.find_by(item_id: item_id)
       cart_item.amount += amount
       cart_item.save
     else
-      CartItem.create(item_id: item_id, amount: amount)
+      CartItem.create(item_id: item_id, amount: amount, customer_id: current_customer.id)
     end
     redirect_to cart_items_path
   end
