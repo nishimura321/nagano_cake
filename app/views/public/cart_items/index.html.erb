@@ -4,7 +4,7 @@
       <h5><span class="bg-gray px-4">ショッピングカート</span></h5>
     </div>
     <div class="col-3 mx-auto">
-      <%= link_to "カートを空にする", cart_items_destry_all_path(current_customer), method: :delete, "data-confirm" => "本当に空にしますか？", class: "btn btn-danger px-4" %>
+      <%= link_to "カートを空にする", cart_items_destroy_all_path(current_customer), method: :delete, "data-confirm" => "本当に空にしますか？", class: "btn btn-danger px-4" %>
     </div>
   </div><br>
 
@@ -28,7 +28,7 @@
           </td>
           <td class="pb-2"><%= cart_item.item.add_tax_price.to_s(:delimited) %></td>
           <td class="pb-2">
-            <%= form_with model: cart_item, url: cart_item_path(cart_item), method: :patch do |f| %>
+            <%= form_with model: cart_item, url: cart_item_path(cart_item.id), method: :patch do |f| %>
             <%= f.select :amount, *[1..10] %>
             <%= f.submit "変更", class: "btn btn-success" %>
             <% end %>
@@ -54,7 +54,7 @@
       <tbody>
         <tr>
           <th class="table-secondary">合計金額</th>
-          <td><%= @total_price.to_s(:delimited) %></td>
+          <td><%= number_with_delimiter(@total_price) %></td>
         </tr>
       </tbody>
     </table>

@@ -41,7 +41,7 @@ before_action :authenticate_customer!
   end
 
   def destroy_all
-    current_customer.cart_items.destroy_all
+    current_customer.cart_item.destroy_all
     flash[:notice] = "カートを空にしました。"
     redirect_to cart_items_path
   end
