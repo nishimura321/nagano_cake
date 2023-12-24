@@ -1,2 +1,77 @@
-<h1>Admin::Orders#show</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-10 mx-auto">
+      <h5><span class="bg-gray px-4">注文履歴詳細</span></h5>
+    </div>
+  </div><br>
+
+  <div class="row">
+    <div class="mx-auto col-9">
+    <table class="table table-borderless">
+      <thead>
+        <tr class="table-secondary">
+          <th class="pb-2">購入者</th>
+          <th class="pb-2">注文日</th>
+          <th class="pb-2">配送先</th>
+          <th class="pb-2">支払方法</th>
+        </tr>
+
+    <% @orders.each do |order| %>
+      <tbody>
+        <tr>
+          <td class="pb-2"><%= link_to "#{order.customer.last_name}#{order.customer.first_name}", admin_customer_path %></td>
+          <td class="pb-2"><%= order.created_at %></td>
+          <td class="pb-2"><%= order.address %><br>
+            <%= order.name %>
+          </td>
+          <td class="pb-2"><%= order.payment_method %>
+        </tr>
+      </tbody>
+    <% end %>
+    </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="mx-auto col-6">
+      <table class="table border border-black">
+      <thead>
+        <tr class="table-secondary">
+          <th class="pb-2">商品名</th>
+          <th class="pb-2">単価(税込)</th>
+          <th class="pb-2">数量</th>
+          <th class="pb-2">小計</th>
+          <th></th>
+        </tr>
+
+      <% @order_details.each do |order_detail| %>
+      <tbody>
+        <tr>
+          <td class="pb-2"><%= order_detail.item.name %></td>
+          <td class="pb-2"><%= corder_detail.item.add_tax_price.to_s(:delimited) %></td>
+          <td class="pb-2"><%= order_detail.amount %></td>
+          <td class="pb-2"><%= order_detail.subtotal.to_s(:delimited) %></td>
+        </tr>
+      </tbody>
+      <% end %>
+    </table>
+    </div>
+
+    <div class="col-3 mx-auto">
+    <table class="table table-borderless">
+      <tbody>
+        <tr>
+          <th class="py-3">合計金額</th>
+          <th class="py-3">送料</th>
+          <th class="py-3">請求金額合計</th>
+        </tr>
+
+        <tr>
+          <td><%= number_with_delimiter(@total_price) %></td>
+          <td></td>
+          <th></th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,40 +1,40 @@
 <div class="container mt-3">
   <div class="row">
-    <div class="col-5 mx-auto">
+    <div class="col-8 mx-auto">
       <h5><span class="bg-gray px-4">ショッピングカート</span></h5>
     </div>
-    <div class="col-3 mx-auto">
+    <div class="col4- mx-auto">
       <%= link_to "カートを空にする", cart_items_destroy_all_path(current_customer), method: :delete, "data-confirm" => "本当に空にしますか？", class: "btn btn-danger px-4" %>
     </div>
   </div><br>
 
   <div class="row">
-    <div class="mx-auto col-9">
-    <table class="table border">
+    <div class="mx-auto col-12">
+    <table class="table border border-black">
       <thead>
         <tr class="table-secondary">
-          <th class="pb-2">商品名</th>
-          <th class="pb-2">単価(税込)</th>
-          <th class="pb-2">数量</th>
-          <th class="pb-2">小計</th>
+          <th class="pb-2" scope="col" style="width: 40%">商品名</th>
+          <th class="pb-2" scope="col" style="width: 15%">単価(税込)</th>
+          <th class="pb-2" scope="col" style="width: 15%">数量</th>
+          <th class="pb-2" scope="col" style="width: 15%">小計</th>
           <th></th>
         </tr>
 
       <% @cart_items.each do |cart_item| %>
       <tbody>
         <tr>
-          <td class="pb-2">
+          <td class="pb-2" scope="col" style="width: 40%">
             <%= image_tag cart_item.item.image, size: "100x50" %>　<%= cart_item.item.name %>
           </td>
-          <td class="pb-2"><%= cart_item.item.add_tax_price.to_s(:delimited) %></td>
-          <td class="pb-2">
+          <td class="pb-2" scope="col" style="width: 15%"><%= cart_item.item.add_tax_price.to_s(:delimited) %></td>
+          <td class="pb-2" scope="col" style="width: 15%">
             <%= form_with model: cart_item, url: cart_item_path(cart_item.id), method: :patch do |f| %>
             <%= f.select :amount, *[1..10] %>
             <%= f.submit "変更", class: "btn btn-success" %>
             <% end %>
           </td>
-          <td class="pb-2"><%= cart_item.subtotal.to_s(:delimited) %></td>
-          <td class="pb-2">
+          <td class="pb-2" scope="col" style="width: 15%"><%= cart_item.subtotal.to_s(:delimited) %></td>
+          <td class="pb-2" scope="col" style="width: 15%">
             <%= link_to "削除する", cart_item_path(cart_item.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger px-4" %>
           </td>
         </tr>
@@ -46,15 +46,15 @@
   <br>
 
   <div class="row">
-    <div class="col-3 mx-auto">
+    <div class="col-9 mx-auto">
     <%= link_to "買い物を続ける", root_path(anchor: 'new_item'), class: "btn btn-primary px-4" %>
     </div>
-    <div class="col-4 mx-auto">
-    <table class="table border">
+    <div class="col-3 mx-auto">
+    <table class="table border border-black">
       <tbody>
         <tr>
-          <th class="table-secondary">合計金額</th>
-          <td><%= number_with_delimiter(@total_price) %></td>
+          <th class="table-secondary py-3" scope="col" style="width: 50%">合計金額</th>
+          <td class="py-3" scope="col" style="width: 50%"><%= number_with_delimiter(@total_price) %></td>
         </tr>
       </tbody>
     </table>
