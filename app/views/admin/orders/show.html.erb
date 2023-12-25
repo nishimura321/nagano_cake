@@ -15,6 +15,7 @@
           <th class="pb-2">配送先</th>
           <th class="pb-2">支払方法</th>
         </tr>
+      </thead>
 
       <tbody>
         <tr>
@@ -22,10 +23,9 @@
           <td class="pb-2"><%= order.created_at %></td>
           <td class="pb-2">
             <%= order.address %><br>
-            <%= order.name %>
-          </td>
+            <%= order.name %></td>
           <td class="pb-2">
-            <%= t("enums.payment_method.#{order.payment_method}") %>
+            <%= t("enums.payment_method.#{order.payment_method}") %></td>
         </tr>
       </tbody>
     </table>
@@ -41,9 +41,8 @@
           <th class="pb-2">単価(税込)</th>
           <th class="pb-2">数量</th>
           <th class="pb-2">小計</th>
-          <th></th>
         </tr>
-
+      </thead>
       <% @order_details.each do |order_detail| %>
       <tbody>
         <tr>
@@ -56,7 +55,7 @@
       <% end %>
     </table>
     </div>
-
+    
     <div class="col-3 mx-auto">
     <table class="table table-borderless">
       <tbody>
@@ -65,7 +64,6 @@
           <th class="py-3">送料</th>
           <th class="py-3">請求金額合計</th>
         </tr>
-
         <tr>
           <td><%= number_with_delimiter(@total_price) %></td>
           <td><%= order.shipping_fee %></td>
@@ -74,4 +72,6 @@
       </tbody>
     </table>
   </div>
+  </div>
+  
 </div>
