@@ -16,18 +16,18 @@
           <th class="pb-2">支払方法</th>
         </tr>
 
-    <% @orders.each do |order| %>
       <tbody>
         <tr>
           <td class="pb-2"><%= link_to "#{order.customer.last_name}#{order.customer.first_name}", admin_customer_path %></td>
           <td class="pb-2"><%= order.created_at %></td>
-          <td class="pb-2"><%= order.address %><br>
+          <td class="pb-2">
+            <%= order.address %><br>
             <%= order.name %>
           </td>
-          <td class="pb-2"><%= order.payment_method %>
+          <td class="pb-2">
+            <%= t("enums.payment_method.#{order.payment_method}") %>
         </tr>
       </tbody>
-    <% end %>
     </table>
     </div>
   </div>
@@ -48,7 +48,7 @@
       <tbody>
         <tr>
           <td class="pb-2"><%= order_detail.item.name %></td>
-          <td class="pb-2"><%= corder_detail.item.add_tax_price.to_s(:delimited) %></td>
+          <td class="pb-2"><%= order_detail.price.to_s(:delimited) %></td>
           <td class="pb-2"><%= order_detail.amount %></td>
           <td class="pb-2"><%= order_detail.subtotal.to_s(:delimited) %></td>
         </tr>
@@ -68,8 +68,8 @@
 
         <tr>
           <td><%= number_with_delimiter(@total_price) %></td>
-          <td></td>
-          <th></th>
+          <td><%= order.shipping_fee %></td>
+          <th><%= order.total_payment %></th>
         </tr>
       </tbody>
     </table>
