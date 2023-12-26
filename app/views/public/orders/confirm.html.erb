@@ -39,7 +39,7 @@
       <tbody>
         <tr>
           <th class="py-2 table-secondary">送料</th>
-          <td></td>
+          <td><%= @order.shipping_fee.to_s(:delimited) %></td>
         </tr>
 
         <tr>
@@ -49,7 +49,7 @@
 
         <tr>
           <th class="py-2 table-secondary">請求金額</th>
-          <td></td>
+          <td><%= @order.total_payment.to_s(:delimited) %></td>
         </tr>
       </tbody>
     </table>
@@ -61,14 +61,14 @@
     <table class="table table-borderless">
       <tbody>
         <tr>
-        <td scope="col" style="width: 14%"><h5><strong>支払方法</strong></h5></td>
-        <td scope="col" style="width: 86%"></td>
+        <td scope="col" style="width: 13%"><h5><strong>支払方法</strong></h5></td>
+        <td scope="col" style="width: 87%"><%= t("enums.payment_method.#{@order.payment_method}") %></td>
         </tr>
 
         <tr>
-        <td scope="col" style="width: 14%"><h5><strong>お届け先</strong></h5></td>
-        <td scope="col" style="width: 86%">〒<%= current_customer.postal_code %> <%= current_customer.address %><br>
-        <%= current_customer.last_name %><%= current_customer.first_name %></td>
+        <td scope="col" style="width: 13%"><h5><strong>お届け先</strong></h5></td>
+        <td scope="col" style="width: 87%">〒<%= @order.postal_code %> <%= @order.address %><br>
+        <%= @order.name %></td>
         </tr>
       </tbody>
     </table>
@@ -82,4 +82,4 @@
       <% end %>
     </div>
   </div>
-</div>
+</div><br><br><br>

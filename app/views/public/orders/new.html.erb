@@ -19,8 +19,8 @@
       </span><br>
       <h5 class="mt-3"><strong>お届け先</strong></h5>
       <span class="pl-3">
-        <%= f.radio_button :select_address, 'own_address' %>
-        <%= f.label :select_address_own_address, 'ご自身の住所' %>
+        <%= f.radio_button :select_address, '0' %>
+        <%= f.label :select_address_0, 'ご自身の住所' %>
       </span><br>
       <span class="pl-5">
         〒<%= current_customer.postal_code %> <%= current_customer.address %>
