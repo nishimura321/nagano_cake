@@ -2,13 +2,22 @@ class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
 
   def new
-    @order = Order.new
+    @order = Order.new(customer_id: current_customer.id)
   end
 
   def create
-    order = Order.new(order_params)
-    order.save
-    redirect_to orders_confirm_path
+    customer = Customer.find(current_customer.id)
+    @order = Order.new(
+    postal_code: customer.postal_code,
+    address: customer.address,
+    name: "#{customer.last_name} #{customer.first_name}"
+    )
+
+    if @order.save
+      redirect_to orders_confirm_path
+    else
+      render :new
+    end
   end
 
   def index
@@ -27,5 +36,5 @@ class Public::OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:postal_code, :address, :name, :shipping_fee, :total_payment, :payment_methode)
   end
-  
+
 end

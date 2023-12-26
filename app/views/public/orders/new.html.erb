@@ -1,30 +1,39 @@
 <div class="container mt-3">
   <div class="row">
-    <div class="col-11 mx-auto">
+    <div class="col-11 mx-auto mb-3">
       <h5><span class="bg-gray px-4">注文情報入力</span></h5>
     </div>
   </div>
 
   <div class="row">
     <div class="col-12 mx-auto">
-      <h6><strong>支払方法</strong></h6>
+      <h5><strong>支払方法</strong></h5>
       <%= form_with model: @order, url: '/orders', method: :post do |f| %>
-      <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
-      <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %><br>
-      <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
-      <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer]%>
-
-      <h6><strong>お届け先</strong></h6>
-      <%= f.radio_button :address, "your_address" %>
-      <%= f.label :address_your_address, "ご自身の住所" %>
-      <%= @order.current_customer.postal_code %> <%= @order.current_customer.address %><br>
-      <%= @order.current_customer.last_name %><%= @order.current_customer.first_name %>
+      <span class="pl-3">
+        <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+        <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %>
+      </span><br>
+      <span class="pl-3">
+        <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+        <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer] %>
+      </span><br>
+      <h5 class="mt-3"><strong>お届け先</strong></h5>
+      <span class="pl-3">
+        <%= f.radio_button :delivery_option, 'own_address' %>
+        <%= f.label :delivery_option, 'ご自身の住所' %>
+      </span><br>
+      <span class="pl-5">
+        〒<%= current_customer.postal_code %> <%= current_customer.address %>
+      </span><br>
+      <span class="pl-5">
+        <%= current_customer.last_name %><%= current_customer.first_name %>
+      </span>
     </div>
-  </div>
+  </div><br>
 
   <div class="row">
-    <div class="col-6 mx-auto">
-      <%= f.submit '確認画面へ進む', class: "btn btn-primary px-2" %>
+    <div class="mx-auto">
+      <%= f.submit '確認画面へ進む', class: "btn btn-primary px-4" %>
       <% end %>
     </div>
   </div>
