@@ -1,1 +1,85 @@
-<h1>注文情報確認</h1>
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-11 mx-auto mb-3">
+      <h5><span class="bg-gray px-4">注文情報確認</span></h5>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-8 mx-auto">
+    <table class="table border border-black">
+      <thead>
+        <tr class="table-secondary">
+          <th class="pb-2">商品名</th>
+          <th class="pb-2">単価(税込)</th>
+          <th class="pb-2">数量</th>
+          <th class="pb-2">小計</th>
+        </tr>
+      </thead>
+
+      <% @cart_items.each do |cart_item| %>
+      <tbody>
+        <tr>
+          <td class="pb-2">
+            <%= image_tag cart_item.item.image, size: "50x25" %>　<%= cart_item.item.name %>
+          </td>
+          <td class="pb-2"><%= cart_item.item.add_tax_price.to_s(:delimited) %></td>
+          <td class="pb-2">
+            <%= cart_item.amount %>
+          </td>
+          <td class="pb-2"><%= cart_item.subtotal.to_s(:delimited) %></td>
+        </tr>
+      </tbody>
+      <% end %>
+    </table>
+    </div>
+
+    <div class="col-4 mx-auto">
+    <table class="table border border-black">
+      <tbody>
+        <tr>
+          <th class="py-2 table-secondary">送料</th>
+          <td></td>
+        </tr>
+
+        <tr>
+          <th class="py-2 table-secondary">商品合計</th>
+          <td><%= number_with_delimiter(@total_price) %></td>
+        </tr>
+
+        <tr>
+          <th class="py-2 table-secondary">請求金額</th>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 mx-auto">
+    <table class="table table-borderless">
+      <tbody>
+        <tr>
+        <td scope="col" style="width: 14%"><h5><strong>支払方法</strong></h5></td>
+        <td scope="col" style="width: 86%"></td>
+        </tr>
+
+        <tr>
+        <td scope="col" style="width: 14%"><h5><strong>お届け先</strong></h5></td>
+        <td scope="col" style="width: 86%">〒<%= current_customer.postal_code %> <%= current_customer.address %><br>
+        <%= current_customer.last_name %><%= current_customer.first_name %></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="mx-auto">
+      <%= form_with model: @order, url: orders_path, method: :post do |f| %>
+      <%= f.submit '注文を確定する', class: "btn btn-success px-4" %>
+      <% end %>
+    </div>
+  </div>
+</div>

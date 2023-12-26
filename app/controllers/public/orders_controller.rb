@@ -27,6 +27,12 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
+    @cart_items = current_customer.cart_item
+    #合計を求める
+    @total_price = 0
+    @cart_items.each do |cart_item|
+      @total_price += cart_item.subtotal
+    end
   end
 
   def thanks
