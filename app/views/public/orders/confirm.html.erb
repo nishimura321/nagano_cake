@@ -62,7 +62,15 @@
       <tbody>
         <tr>
         <td scope="col" style="width: 13%"><h5><strong>支払方法</strong></h5></td>
-        <td scope="col" style="width: 87%"><%= t("enums.payment_method.#{@order.payment_method}") %></td>
+        <td scope="col" style="width: 87%">
+        <%= if @order.payment_method == "credit_card"
+         I18n.t("enums.order.payment_method.credit_card")
+         elsif @order.payment_method == "transfer"
+         I18n.t("enums.order.payment_method.transfer")
+         else
+         ""
+         end %>
+       </td>
         </tr>
 
         <tr>
@@ -78,6 +86,11 @@
   <div class="row">
     <div class="mx-auto">
       <%= form_with model: @order, url: orders_path, method: :post do |f| %>
+      <%= f.hidden_field :order.postal_code, :value => order.postal_code %>
+      <%= f.hidden_field :order.address, :value => order.address %>
+      <%= f.hidden_field :order.name, :value => order.name %>
+      <%= f.hidden_field :order.shipping_fee, :value => order.shipping_fee %>
+      <%= f.hidden_field :order.total_payment, :value => order.total_payment %>
       <%= f.submit '注文を確定する', class: "btn btn-success px-4" %>
       <% end %>
     </div>
