@@ -8,7 +8,7 @@ class Public::OrdersController < ApplicationController
   def create
     order = Order.new(order_params)
     order.save
-    @cart_items = current_customer.cart_items
+    @cart_items = current_customer.cart_item
 
     @cart_items.each do |cart_item|
       @order_details = OrderDetail.new
@@ -20,10 +20,11 @@ class Public::OrdersController < ApplicationController
     end
 
     CartItem.destroy_all
-    redirect_to oeders_thanks_path
+    redirect_to orders_thanks_path
   end
 
   def index
+    @orders = Order.all
   end
 
   def show

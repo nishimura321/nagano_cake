@@ -30,7 +30,7 @@ Rails.application.routes.draw do
     resources :addresses, only: [:create, :index, :edit, :update, :destroy]
     resources :orders, only: [:new, :create, :index, :show]
     post 'orders/confirm' => 'orders#confirm'
-    get 'oeders/thanks' => 'oeders#thanks'
+    get 'orders/thanks' => 'orders#thanks'
   end
 
   #管理者側

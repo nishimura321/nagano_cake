@@ -10,7 +10,9 @@
     <% @items.each do |item| %>
       <div class="col-3">
       <div class="item mb-4">
-      <%= link_to image_tag(item.image, size: "250x150"), item_path(item) %>
+      <%= link_to item_path(item) do %>
+      <%= image_tag item.get_image(250, 150) %>
+      <% end %>
       <p class="mt-3"><strong><%= item.name %></strong><p>
       <p class="mb-5"><strong>¥<%= item.price.to_s(:delimited) %></strong></p>
       </div>

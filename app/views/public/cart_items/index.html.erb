@@ -24,7 +24,7 @@
       <tbody>
         <tr>
           <td class="pb-2" scope="col" style="width: 40%">
-            <%= image_tag cart_item.item.image, size: "100x50" %>　<%= cart_item.item.name %>
+            <%= image_tag cart_item.item.get_image(100, 50) %>　<%= cart_item.item.name %>
           </td>
           <td class="pb-2" scope="col" style="width: 15%"><%= cart_item.item.add_tax_price.to_s(:delimited) %></td>
           <td class="pb-2" scope="col" style="width: 15%">

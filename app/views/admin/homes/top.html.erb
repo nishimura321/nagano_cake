@@ -18,7 +18,7 @@
     <% @orders.each do |order| %>
       <tbody>
         <tr>
-          <td class="pb-2"><%= link_to order.created_at, admin_order_path %></td>
+          <td class="pb-2"><%= link_to order.created_at, admin_order_path(order.id) %></td>
           <td class="pb-2"><%= order.order.customer_id %></td>
           <td class="pb-2"><%= order.amount %></td>
         </tr>

@@ -9,6 +9,7 @@ class Customer < ApplicationRecord
     super && (is_active == true)
   end
 
+
  has_many :order, dependent: :destroy
  has_many :cart_item, dependent: :destroy
 end
