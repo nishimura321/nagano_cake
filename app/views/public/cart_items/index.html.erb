@@ -23,18 +23,18 @@
       <% @cart_items.each do |cart_item| %>
       <tbody>
         <tr>
-          <td class="pb-2" scope="col" style="width: 40%">
+          <td class="pb-2 align-middle" scope="col" style="width: 40%">
             <%= image_tag cart_item.item.get_image(100, 50) %>　<%= cart_item.item.name %>
           </td>
-          <td class="pb-2" scope="col" style="width: 15%"><%= cart_item.item.add_tax_price.to_s(:delimited) %></td>
-          <td class="pb-2" scope="col" style="width: 15%">
+          <td class="pb-2 align-middle" scope="col" style="width: 15%"><%= cart_item.item.add_tax_price.to_s(:delimited) %></td>
+          <td class="pb-2 align-middle" scope="col" style="width: 15%">
             <%= form_with model: cart_item, url: cart_item_path(cart_item.id), method: :patch do |f| %>
             <%= f.select :amount, *[1..10] %>
             <%= f.submit "変更", class: "btn btn-success" %>
             <% end %>
           </td>
-          <td class="pb-2" scope="col" style="width: 15%"><%= cart_item.subtotal.to_s(:delimited) %></td>
-          <td class="pb-2" scope="col" style="width: 15%">
+          <td class="pb-2 align-middle" scope="col" style="width: 15%"><%= cart_item.subtotal.to_s(:delimited) %></td>
+          <td class="pb-2 align-middle" scope="col" style="width: 15%">
             <%= link_to "削除する", cart_item_path(cart_item.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger px-4" %>
           </td>
         </tr>
