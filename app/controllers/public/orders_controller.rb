@@ -28,6 +28,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
+    @order = Order.find(params[:id])
+    @total_price = @order.total_payment - @order.shipping_fee
   end
 
   def confirm
