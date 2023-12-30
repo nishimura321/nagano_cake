@@ -25,14 +25,14 @@ before_action :authenticate_customer!
   def update
     @cart_item = CartItem.find(params[:id])
     @cart_item.update(cart_item_params)
-      flash.now[:notice] = "変更を保存しました。"
+      flash[:notice] = "変更を保存しました。"
       redirect_to cart_items_path
   end
 
   def destroy
     @cart_item = CartItem.find(params[:id])
     @cart_item.destroy
-    flash.now[:notice] = "削除しました。"
+    flash[:notice] = "削除しました。"
     redirect_to cart_items_path
   end
 

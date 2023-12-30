@@ -9,7 +9,6 @@ class Public::OrdersController < ApplicationController
     order = Order.new(order_params)
     order.save
     @cart_items = current_customer.cart_item
-
     @cart_items.each do |cart_item|
       @order_details = OrderDetail.new
       @order_details.order_id = order.id
@@ -18,7 +17,6 @@ class Public::OrdersController < ApplicationController
       @order_details.amount = cart_item.amount
       @order_details.save
     end
-
     CartItem.destroy_all
     redirect_to orders_thanks_path
   end
