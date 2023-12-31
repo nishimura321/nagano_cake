@@ -8,8 +8,8 @@ def subtotal
 end
 
 #注文個数をトータルで表示するメソッド
-def total_amount
-    order_details.sum(:amount)
+def self.total_amount(order_id)
+    where(order_id: order_id).sum(:amount)
 end
 
 end

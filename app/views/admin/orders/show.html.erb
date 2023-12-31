@@ -6,26 +6,35 @@
   </div><br>
 
   <div class="row">
-    <div class="mx-auto col-9">
+    <div class="col-11">
     <table class="table table-borderless">
-      <thead>
-        <tr class="table-secondary">
-          <th class="pb-2">購入者</th>
-          <th class="pb-2">注文日</th>
-          <th class="pb-2">配送先</th>
-          <th class="pb-2">支払方法</th>
-        </tr>
-      </thead>
-
       <tbody>
         <tr>
-          <td class="pb-2"><%= link_to "#{order.customer.last_name}#{order.customer.first_name}", admin_customer_path %></td>
-          <td class="pb-2"><%= order.created_at %></td>
+          <th class="pb-2">購入者</th>
+          <td class="pb-2"><%= link_to "#{@order.customer.last_name}#{@order.customer.first_name}", admin_customer_path %></td>
+        </tr>
+        <tr>
+          <th class="pb-2">注文日</th>
+          <td class="pb-2"><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+        </tr>
+        <tr>
+          <th class="pb-2">配送先</th>
           <td class="pb-2">
-            <%= order.address %><br>
-            <%= order.name %></td>
+            〒<%= @order.postal_code %><%= @order.address %><br>
+            <%= @order.name %>
+          </td>
+        </tr>
+        <tr>
+          <th class="pb-2">支払方法</th>
           <td class="pb-2">
-            <%= t("enums.payment_method.#{order.payment_method}") %></td>
+          <%= if @order.payment_method == "credit_card"
+          I18n.t("enums.order.payment_method.credit_card")
+          elsif @order.payment_method == "transfer"
+          I18n.t("enums.order.payment_method.transfer")
+          else
+          ""
+          end %>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -33,8 +42,8 @@
   </div>
 
   <div class="row">
-    <div class="mx-auto col-6">
-      <table class="table border border-black">
+    <div class="col-8">
+      <table class="table">
       <thead>
         <tr class="table-secondary">
           <th class="pb-2">商品名</th>
@@ -43,7 +52,7 @@
           <th class="pb-2">小計</th>
         </tr>
       </thead>
-      <% @order_details.each do |order_detail| %>
+      <% @order_detail.each do |order_detail| %>
       <tbody>
         <tr>
           <td class="pb-2"><%= order_detail.item.name %></td>
@@ -55,23 +64,25 @@
       <% end %>
     </table>
     </div>
-    
-    <div class="col-3 mx-auto">
+
+    <div class="col-3">
     <table class="table table-borderless">
       <tbody>
         <tr>
           <th class="py-3">合計金額</th>
-          <th class="py-3">送料</th>
-          <th class="py-3">請求金額合計</th>
+          <td><%= number_with_delimiter(@total_price) %>円</td>
         </tr>
         <tr>
-          <td><%= number_with_delimiter(@total_price) %></td>
-          <td><%= order.shipping_fee %></td>
-          <th><%= order.total_payment %></th>
+          <th class="py-3">送料</th>
+          <td><%= @order.shipping_fee %>円</td>
+        </tr>
+        <tr>
+          <th class="py-3">請求金額合計</th>
+          <th><%= @order.total_payment.to_s(:delimited) %>円</th>
         </tr>
       </tbody>
     </table>
   </div>
   </div>
-  
+
 </div>
