@@ -11,6 +11,12 @@ before_action :authenticate_admin!
     end
   end
 
+  #def destroy
+    #order = Order.find(params[:id])
+    #order.destroy
+    #redirect_to admin_path
+  #end
+
   #def update
   #end
 
