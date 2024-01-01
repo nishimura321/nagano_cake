@@ -47,7 +47,7 @@
 
   <div class="row">
     <div class="col-9 mx-auto">
-    <%= link_to "買い物を続ける", root_path(anchor: 'new_item'), class: "btn btn-primary px-4" %>
+    <%= link_to "買い物を続ける", root_path, class: "btn btn-primary px-4" %>
     </div>
     <div class="col-3 mx-auto">
     <table class="table border border-black">
@@ -62,8 +62,12 @@
   </div>
   <br>
 
+<% if @cart_items.empty? %>
+  <!-- カートが空の場合に非表示にする -->
+<% else %>
   <div class="row justify-content-center">
     <%= link_to "情報入力に進む", new_order_path, class: "btn btn-success px-4" %>
   </div>
-  <br><br><br><br>
+<% end %>
+<br><br><br><br>
 </div>
