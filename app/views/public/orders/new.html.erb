@@ -27,7 +27,40 @@
       </span><br>
       <span class="pl-5">
         <%= current_customer.last_name %><%= current_customer.first_name %>
+      </span><br><br>
+      <span class="pl-3">
+        <%= f.radio_button :select_address, '1' %>
+        <%= f.label :select_address_1, '登録済住所から選択' %>
+      </span><br>
+      <span class="pl-5">
+      <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>
+      </span><br><br>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <span class="pl-3">
+        <%= f.radio_button :select_address, '2' %>
+        <%= f.label :select_address_2, '新しいお届け先' %>
+      </span><br>
+      <span class="pl-5">
+        郵便番号(ハイフンなし)
       </span>
+      <span class="pl-5">
+        <%= f.text_field :postal_code, placeholder: "0000000", class: "form-control", style: "display: inline-block;" %>
+      </span><br>
+      <span class="pl-5">
+        住所
+      </span>
+      <span class="pl-5">
+        <%= f.text_field :address, placeholder: "東京都渋谷区代々木神園町0-0", class: "form-control", style: "display: inline-block;" %>
+      </span>
+      <span class="pl-5">
+        宛名
+      </span>
+      <span class="pl-5">
+        <%= f.text_field :name, placeholder: "令和道子", class: "form-control", style: "display: inline-block;" %>
+      </span><br>
     </div>
   </div><br>
 
