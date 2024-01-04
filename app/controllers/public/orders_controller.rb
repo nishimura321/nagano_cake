@@ -22,7 +22,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.all
+    @orders = Order.order(created_at: :desc).all
   end
 
   def show
