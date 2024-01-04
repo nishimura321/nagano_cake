@@ -3,6 +3,7 @@ class Public::OrdersController < ApplicationController
 
   def new
     @order = Order.new
+    @addresses = current_customer.addresses
   end
 
   def create
@@ -22,7 +23,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.order(created_at: :desc).all
+    @orders = current_customer.order.order(created_at: :desc)
   end
 
   def show

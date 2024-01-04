@@ -33,7 +33,7 @@
         <%= f.label :select_address_1, '登録済住所から選択' %>
       </span><br>
       <span class="pl-5">
-      <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>
+      <%= f.select :address_id, options_from_collection_for_select(@addresses, :id, :address_display), include_blank: "-- 選択してください --" %>
       </span><br><br>
     </div>
   </div>
