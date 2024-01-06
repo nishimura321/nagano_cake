@@ -1,16 +1,12 @@
 class Admin::GenresController < ApplicationController
   before_action :authenticate_admin!
 
-  def new
-    @genre = Genre.new
-  end
-
   def create
     @genre = Genre.new(genre_params)
     if @genre.save
       flash.now[:notice] = "新規登録が完了しました。"
       @genres = Genre.all
-      render :index
+      redirect_to admin_genres_path
     else
       flash.now[:notice] = "新規登録に失敗しました。"
       render :index
